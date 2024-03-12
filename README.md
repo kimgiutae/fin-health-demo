@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# Fin-Health-Demo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi, my name is Jonathan Kim, and this is a prototype SPA made for an assessment for "FreeTheFreela".
 
-## Available Scripts
+The app is a financial health data visualization tool, that shows a fictional company latest data, like revenue, expenses and balance.
 
-In the project directory, you can run:
+The app integrate mainly a chart and a table, that can be easly extended by the sidebar.
 
-### `npm start`
+## Main tech used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This is not an exhaustive list (More info in package.json):
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- create-react-app
+- ChakraUI
+- TanStack react-query
+- TypeScript
+- chart.js
 
-### `npm test`
+With this, I created some functionality to improve the UX:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Suspense and skeletons for beautiful eye-candy loaders
+- Lazy load for heavy components (like MainChart)
+- debounce/throttle (lodash) for optimized func calls
+- react-query for unifying the data queries (and cache) all over the app
 
-### `npm run build`
+The main visualization tool I used was chart.js, that provided a very fluid HTML5 canvas rendering with crystal clear text, lines and integrated animations.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Observations
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**First of all. I had to code in a hurry. I was in vacations :D.**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I used the tooling recommended by the assessment, also to show that I can adapt myself to any project client requirements. If the concepts are clear, a good dev can make a good app with almost any stack.
 
-### `npm run eject`
+But I have 2 recommendations to improve UX and also DX:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Replace CRA with something more robust, modern and stable, like Next.js or Remix. BTW, the official react website recommend this for any new project. The future trend is to CRA being finally deprecated.
+- Replace ChakraUI with TailwindCSS coupled with a UI System built over it, like ShadcnUI or HeadlessUI. Utility CSS proved (over years) to be better for big-scale apps. Also CSS-in-JS adds a lot of runtime overhead (more JS to client = heavier apps) that can causes crashes and errors hard to follow.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Also, I could have used some React component for charts out-of-the-box, but I wanted to show my skills with react core concepts (like context, refs, memoization and states) using the chart.js lib and integrate it with react myself.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I couldn't use Redux, cause lack of time. But context is good enough for rapid-prototyping.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Pending
 
-## Learn More
+Some (short-term) to-dos to improve app overall:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Create mock server to create more "realistic" data and easly port to other invironments.
+- Better understandment of client visualization goals (the assessment was little vague).
+- Better testing.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## How to run
+
+Simple clone the repo, install deps in local, and run command: "npm start".
+
+Requires node.js at least v16.
