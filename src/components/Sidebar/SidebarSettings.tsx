@@ -4,9 +4,13 @@ import SidebarSwitch from 'components/Sidebar/SidebarSwitch'
 import SidebarSection from './SidebarSection'
 import useChartContext from 'hooks/useChartContext'
 import type { FC } from 'react'
+import useExpensesQuery from 'hooks/useExpensesQuery'
+import useCompanyQuery from 'hooks/useCompanyQuery'
 
 const SidebarSettings: FC = () => {
   const { hideProfitUpdate, monthsCountUpdate, hideExpensesUpdate } = useChartContext()
+  const { data: company } = useCompanyQuery()
+  const { data: _expenses } = useExpensesQuery(company?.id || 0)
   return (
     <SidebarSection sx={{ mb: '0' }} title='Chart display settings'>
       <SidebarSwitch

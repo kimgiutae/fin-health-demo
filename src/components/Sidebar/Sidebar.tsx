@@ -13,7 +13,7 @@ const Sidebar: FC<SidebarProps> = () => {
       <Suspense fallback={<SidebarSectionSkeleton />}>
         <SidebarCompany />
       </Suspense>
-      <Suspense>
+      <Suspense fallback={<SidebarSectionSkeleton />}>
         <SidebarSettings />
       </Suspense>
     </Box>
