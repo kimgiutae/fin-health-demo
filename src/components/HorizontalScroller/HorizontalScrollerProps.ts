@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
+import type { SystemStyleObject } from '@chakra-ui/react'
 
 type HorizontalScrollerProps = {
+  id?: string
+  sx?: SystemStyleObject
   children: ReactNode
-  marginBottom?: string
 }
 
 export type { HorizontalScrollerProps }

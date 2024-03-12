@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 const ChartSkeleton: FC = () => {
   return (
-    <Skeleton sx={styles.wrapper}>
+    <Skeleton sx={styles.scroller}>
       <AspectRatio maxW='600px' ratio={16 / 9}>
         <div />
       </AspectRatio>

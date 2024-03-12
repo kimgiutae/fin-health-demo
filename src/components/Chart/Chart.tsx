@@ -101,13 +101,11 @@ const Chart: FC<ChartProps> = () => {
     }
   }, [revenues, expenses, canvasRef, hideProfit, monthsCount, hideExpenses])
   return (
-    <Box id='chart' sx={styles.wrapper}>
-      <HorizontalScroller>
-        <Box minWidth={600}>
-          <canvas ref={canvasRef} />
-        </Box>
-      </HorizontalScroller>
-    </Box>
+    <HorizontalScroller id='chart' sx={styles.scroller}>
+      <Box sx={styles.wrapper}>
+        <canvas ref={canvasRef} />
+      </Box>
+    </HorizontalScroller>
   )
 }
 

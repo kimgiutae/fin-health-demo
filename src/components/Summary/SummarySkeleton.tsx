@@ -5,7 +5,7 @@ import type { FC } from 'react'
 
 const SummarySkeleton: FC = () => {
   return (
-    <HorizontalScroller marginBottom='1rem'>
+    <HorizontalScroller sx={styles.scroller}>
       <StatGroup sx={styles.wrapper}>
         <Skeleton>
           <Stat>
