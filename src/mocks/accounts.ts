@@ -22,9 +22,9 @@ const accounts: Account[] = [
     balance: 210.0
   },
   {
-    bank: 'Plaid 401k',
-    name: '401k',
-    balance: 23631.98
+    bank: 'Plaid Money Market',
+    name: 'Money market',
+    balance: 43200.0
   }
 ]
 
