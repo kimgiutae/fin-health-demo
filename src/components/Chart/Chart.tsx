@@ -10,6 +10,7 @@ import { useRef, useEffect } from 'react'
 import { HorizontalScroller } from 'components/HorizontalScroller'
 import { Chart as ChartAuto } from 'chart.js/auto'
 import type { FC } from 'react'
+import type { ChartProps } from './ChartProps'
 
 const Chart: FC<ChartProps> = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -107,10 +108,6 @@ const Chart: FC<ChartProps> = () => {
       </Box>
     </HorizontalScroller>
   )
-}
-
-type ChartProps = {
-  children?: undefined
 }
 
 export default Chart

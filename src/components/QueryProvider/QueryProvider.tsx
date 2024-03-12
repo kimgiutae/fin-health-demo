@@ -1,5 +1,6 @@
-import { FC, ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import type { FC } from 'react'
+import type { QueryProviderProps } from './QueryProviderProps'
 
 const client = new QueryClient({
   defaultOptions: {
@@ -11,10 +12,6 @@ const client = new QueryClient({
 
 const QueryProvider: FC<QueryProviderProps> = ({ children }) => {
   return <QueryClientProvider client={client}>{children}</QueryClientProvider>
-}
-
-type QueryProviderProps = {
-  children: ReactNode
 }
 
 export default QueryProvider

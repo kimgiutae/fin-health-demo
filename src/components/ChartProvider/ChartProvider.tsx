@@ -1,6 +1,7 @@
 import ChartContext from 'contexts/ChartContext'
 import { useState } from 'react'
-import type { FC, ReactNode } from 'react'
+import type { FC } from 'react'
+import type { ChartProviderProps } from './ChartProviderProps'
 
 const ChartProvider: FC<ChartProviderProps> = ({ children }) => {
   const [hideProfit, hideProfitUpdate] = useState(false)
@@ -20,10 +21,6 @@ const ChartProvider: FC<ChartProviderProps> = ({ children }) => {
       {children}
     </ChartContext.Provider>
   )
-}
-
-type ChartProviderProps = {
-  children: ReactNode
 }
 
 export default ChartProvider

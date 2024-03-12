@@ -1,6 +1,7 @@
-import { Box } from '@chakra-ui/react'
 import styles from './MainWrapperStyles'
-import type { FC, ReactNode } from 'react'
+import { Box } from '@chakra-ui/react'
+import type { FC } from 'react'
+import type { MainWrapperProps } from './MainWrapperProps'
 
 const MainWrapper: FC<MainWrapperProps> = ({ children }) => {
   return (
@@ -8,10 +9,6 @@ const MainWrapper: FC<MainWrapperProps> = ({ children }) => {
       {children}
     </Box>
   )
-}
-
-type MainWrapperProps = {
-  children: ReactNode
 }
 
 export default MainWrapper

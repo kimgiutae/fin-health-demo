@@ -1,16 +1,16 @@
 import {
-  Table as ChakraTable,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
   Td,
-  TableContainer,
-  Tabs,
-  TabList,
+  Th,
+  Tr,
   Tab,
+  Tabs,
+  Tbody,
+  Thead,
+  TabList,
+  TabPanel,
   TabPanels,
-  TabPanel
+  TableContainer,
+  Table as ChakraTable
 } from '@chakra-ui/react'
 import currency from 'currency.js'
 import { kebabCase } from 'lodash'
