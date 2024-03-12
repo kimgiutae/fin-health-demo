@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 const SidebarMoreError: FC = () => {
   return (
-    <SidebarSection sx={{ color: 'red' }} title='More settings'>
+    <SidebarSection sx={{ mb: '0', color: 'red' }} title='More settings'>
       <Alert status='error' sx={{ color: '#555' }}>
         <AlertIcon />A problem ocurred during data fetching. Please, try again later.
       </Alert>

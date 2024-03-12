@@ -9,7 +9,7 @@ const SidebarMore: FC = () => {
     throw error
   }
   return (
-    <SidebarSection title='More settings'>
+    <SidebarSection sx={{ mb: '0' }} title='More settings'>
       <div></div>
     </SidebarSection>
   )
