@@ -8,7 +8,7 @@ const theme = extendTheme({
           md: '100%'
         },
         letterSpacing: 'wide',
-        'scroll-behavior': 'smooth'
+        scrollBehavior: 'smooth'
       },
       body: {
         h: {
