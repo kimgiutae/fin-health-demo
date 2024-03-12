@@ -4,25 +4,29 @@ import {
   Tr,
   Tab,
   Tabs,
+  Alert,
+  Table,
   Tbody,
   Thead,
   TabList,
   TabPanel,
+  AlertIcon,
   TabPanels,
-  TableContainer,
-  Table as ChakraTable
+  TableContainer
 } from '@chakra-ui/react'
 import currency from 'currency.js'
 import { kebabCase } from 'lodash'
 import useCardsQuery from 'hooks/useCardsQuery'
+import useLoansQuery from 'hooks/useLoansQuery'
 import useCompanyQuery from 'hooks/useCompanyQuery'
 import useAccountsQuery from 'hooks/useAccountsQuery'
 import type { FC } from 'react'
-import type { TableProps } from './TableProps'
+import type { MoreInfoProps } from './MoreInfoProps'
 
-const Table: FC<TableProps> = () => {
+const MoreInfo: FC<MoreInfoProps> = () => {
   const { data: company } = useCompanyQuery()
   const { data: cards } = useCardsQuery(company?.id ?? 0)
+  const { data: loans } = useLoansQuery(company?.id ?? 0)
   const { data: accounts } = useAccountsQuery(company?.id ?? 0)
   return (
     <Tabs>
@@ -32,9 +36,9 @@ const Table: FC<TableProps> = () => {
         <Tab>Loans</Tab>
       </TabList>
       <TabPanels>
-        <TabPanel>
+        <TabPanel p='1rem 0'>
           <TableContainer>
-            <ChakraTable variant='striped'>
+            <Table variant='striped'>
               <Thead>
                 <Tr>
                   <Th>Bank name</Th>
@@ -51,12 +55,12 @@ const Table: FC<TableProps> = () => {
                   </Tr>
                 ))}
               </Tbody>
-            </ChakraTable>
+            </Table>
           </TableContainer>
         </TabPanel>
-        <TabPanel>
+        <TabPanel p='1rem 0'>
           <TableContainer>
-            <ChakraTable variant='striped'>
+            <Table variant='striped'>
               <Thead>
                 <Tr>
                   <Th>Card Name</Th>
@@ -79,12 +83,22 @@ const Table: FC<TableProps> = () => {
                   </Tr>
                 ))}
               </Tbody>
-            </ChakraTable>
+            </Table>
           </TableContainer>
+        </TabPanel>
+        <TabPanel p='1rem 0'>
+          {loans?.length ? (
+            <TableContainer></TableContainer>
+          ) : (
+            <Alert status='info'>
+              <AlertIcon />
+              We could't find any registered loan.
+            </Alert>
+          )}
         </TabPanel>
       </TabPanels>
     </Tabs>
   )
 }
 
-export default Table
+export default MoreInfo

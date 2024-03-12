@@ -2,8 +2,8 @@ import styles from './ContentStyles'
 import { Box } from '@chakra-ui/react'
 import { ChartSkeleton } from 'components/Chart'
 import { lazy, Suspense } from 'react'
-import { Table, TableSkeleton } from 'components/Table'
 import { Summary, SummarySkeleton } from 'components/Summary'
+import { MoreInfo, MoreInfoSkeleton } from 'components/MoreInfo'
 import type { FC } from 'react'
 import type { ContentProps } from './ContentProps'
 
@@ -18,8 +18,8 @@ const ContentWrapper: FC<ContentProps> = () => {
       <Suspense fallback={<ChartSkeleton />}>
         <ChartLazy />
       </Suspense>
-      <Suspense fallback={<TableSkeleton />}>
-        <Table />
+      <Suspense fallback={<MoreInfoSkeleton />}>
+        <MoreInfo />
       </Suspense>
     </Box>
   )
