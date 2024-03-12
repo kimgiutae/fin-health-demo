@@ -1,9 +1,12 @@
 import styles from './SidebarStyles'
 import { Box } from '@chakra-ui/react'
+import SidebarMore from './SidebarMore'
 import { Suspense } from 'react'
-import SidebarCompany from 'components/Sidebar/SidebarCompany'
-import SidebarSettings from 'components/Sidebar/SidebarSettings'
-import SidebarSectionSkeleton from 'components/Sidebar/SidebarSectionSkeleton'
+import SidebarCompany from './SidebarCompany'
+import SidebarSettings from './SidebarSettings'
+import SidebarMoreError from './SidebarMoreError'
+import { ErrorBoundary } from 'react-error-boundary'
+import SidebarSectionSkeleton from './SidebarSectionSkeleton'
 import type { FC } from 'react'
 import type { SidebarProps } from './SidebarProps'
 
@@ -21,6 +24,11 @@ const Sidebar: FC<SidebarProps> = () => {
       <Suspense fallback={<SidebarSectionSkeleton />}>
         <SidebarSettings />
       </Suspense>
+      <ErrorBoundary fallback={<SidebarMoreError />}>
+        <Suspense fallback={<SidebarSectionSkeleton />}>
+          <SidebarMore />
+        </Suspense>
+      </ErrorBoundary>
     </Box>
   )
 }

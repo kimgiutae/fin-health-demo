@@ -12,7 +12,7 @@ const SidebarSettings: FC = () => {
   const { data: company } = useCompanyQuery()
   const { data: _expenses } = useExpensesQuery(company?.id || 0)
   return (
-    <SidebarSection sx={{ mb: '0' }} title='Chart display settings'>
+    <SidebarSection title='Chart display settings'>
       <SidebarSwitch
         name='hide-profit'
         label='Hide profit?'
