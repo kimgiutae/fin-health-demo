@@ -1,17 +1,20 @@
 import delay from 'utils/delay'
 import loans from 'mocks/loans'
-import { useQuery } from 'react-query'
-import type { UseQueryResult } from 'react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 
 const useLoansQuery: UseLoansQuery = (_companyId) => {
-  const query = useQuery('loans', async () => {
-    await delay(1000)
-    return loans
+  const query = useSuspenseQuery({
+    queryKey: ['loans'],
+    queryFn: async () => {
+      await delay(1300)
+      return loans
+    }
   })
   return query
 }
 
-type UseLoansQuery = (companyId: number) => UseQueryResult<number[], unknown>
+type UseLoansQuery = (companyId: number) => UseSuspenseQueryResult<number[], Error>
 
 export default useLoansQuery
 export type { UseLoansQuery }

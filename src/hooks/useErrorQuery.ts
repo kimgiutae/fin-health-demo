@@ -1,21 +1,20 @@
 import delay from 'utils/delay'
-import company from 'mocks/company'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import type { Company } from 'types/Company'
 import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 
-const useCompanyQuery: UseCompanyQuery = () => {
+const useErrorQuery: UseErrorQuery = () => {
   const query = useSuspenseQuery({
-    queryKey: ['company'],
+    queryKey: ['error'],
     queryFn: async () => {
-      await delay(1000)
-      return company
+      await delay(500)
+      throw Error('Server error')
     }
   })
   return query
 }
 
-type UseCompanyQuery = () => UseSuspenseQueryResult<Company, Error>
+type UseErrorQuery = () => UseSuspenseQueryResult<Company, Error>
 
-export default useCompanyQuery
-export type { UseCompanyQuery }
+export default useErrorQuery
+export type { UseErrorQuery }

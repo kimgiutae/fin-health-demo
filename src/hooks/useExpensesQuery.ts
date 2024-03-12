@@ -1,17 +1,20 @@
 import delay from 'utils/delay'
 import expenses from 'mocks/expenses'
-import { useQuery } from 'react-query'
-import type { UseQueryResult } from 'react-query'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import type { UseSuspenseQueryResult } from '@tanstack/react-query'
 
 const useExpensesQuery: UseExpensesQuery = (_companyId) => {
-  const query = useQuery('expenses', async () => {
-    await delay(1200)
-    return expenses
+  const query = useSuspenseQuery({
+    queryKey: ['expenses'],
+    queryFn: async () => {
+      await delay(1300)
+      return expenses
+    }
   })
   return query
 }
 
-type UseExpensesQuery = (companyId: number) => UseQueryResult<number[], unknown>
+type UseExpensesQuery = (companyId: number) => UseSuspenseQueryResult<number[], Error>
 
 export default useExpensesQuery
 export type { UseExpensesQuery }
