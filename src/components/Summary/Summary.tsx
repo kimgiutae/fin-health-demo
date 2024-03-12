@@ -9,6 +9,8 @@ import { Stat, StatLabel, StatNumber, StatGroup, StatHelpText } from '@chakra-ui
 import type { FC } from 'react'
 import type { SummaryProps } from './SummaryProps'
 
+// Component to show in <Content> area. Here summarizes important data
+// in forms of little stats boxes: revenue, expenses, profit, etc.
 const Summary: FC<SummaryProps> = () => {
   const { data: company } = useCompanyQuery()
   const { data: revenues } = useRevenuesQuery(company?.id || 0)

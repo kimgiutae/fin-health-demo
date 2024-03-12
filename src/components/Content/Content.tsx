@@ -7,16 +7,20 @@ import { MoreInfo, MoreInfoSkeleton } from 'components/MoreInfo'
 import type { FC } from 'react'
 import type { ContentProps } from './ContentProps'
 
-const ContentWrapper: FC<ContentProps> = () => {
+// One of the main UI sections of the app. Here relies important
+// comps like <Summary> details, the main <Chart> and the tables
+// of <MoreInfo />. All surrounded by <Suspense> and fallbacks to
+// skeletons for better UX.
+const Content: FC<ContentProps> = () => {
   // PERF: delay expensive script load
-  const ChartLazy = lazy(() => import('components/Chart'))
+  const LazyChart = lazy(() => import('components/Chart'))
   return (
     <Box sx={styles.wrapper}>
       <Suspense fallback={<SummarySkeleton />}>
         <Summary />
       </Suspense>
       <Suspense fallback={<ChartSkeleton />}>
-        <ChartLazy />
+        <LazyChart />
       </Suspense>
       <Suspense fallback={<MoreInfoSkeleton />}>
         <MoreInfo />
@@ -25,4 +29,4 @@ const ContentWrapper: FC<ContentProps> = () => {
   )
 }
 
-export default ContentWrapper
+export default Content

@@ -12,6 +12,9 @@ import { Chart as ChartAuto } from 'chart.js/auto'
 import type { FC } from 'react'
 import type { ChartProps } from './ChartProps'
 
+// Main chart component. The chart renders an empty <canvas /> that
+// using React API (ref, effect and state) will be filled with chart.js
+// logic and customized with the <ChartProvider> state.
 const Chart: FC<ChartProps> = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -20,14 +23,14 @@ const Chart: FC<ChartProps> = () => {
   const { data: expenses } = useExpensesQuery(company?.id || 0)
   const { hideProfit, monthsCount, hideExpenses } = useChartContext()
 
+  // NOTE: effect only re-trigers if <ChartProvider> or queries content updates
   useEffect(() => {
     const { current } = canvasRef
     if (!current || !revenues || !expenses) {
       return
     }
 
-    // Build chart.js config according to context
-
+    // NOTE: Build chart.js config according to context
     const datasets = []
 
     const revenueDataset = {
@@ -85,17 +88,25 @@ const Chart: FC<ChartProps> = () => {
             },
             beginAtZero: true
           }
+        },
+        plugins: {
+          legend: {
+            onClick: (ev) => {
+              ev.native?.stopPropagation()
+            }
+          }
         }
       }
     })
 
-    // PERF: Debounce function to decrease unnecesary re-renders
+    // PERF: Debounce function to decrease unnecessary lib calls
     const windowOnResize = debounce(() => {
       chart.resize()
     }, 500)
 
     window.addEventListener('resize', windowOnResize)
 
+    // PERF: Always destroy lib instances and expensive listeners to avoid memory-leaks
     return () => {
       chart.destroy()
       window.removeEventListener('resize', windowOnResize)

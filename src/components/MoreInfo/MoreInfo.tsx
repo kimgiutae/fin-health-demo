@@ -23,6 +23,8 @@ import useAccountsQuery from 'hooks/useAccountsQuery'
 import type { FC } from 'react'
 import type { MoreInfoProps } from './MoreInfoProps'
 
+// Component to show in <Content> area. Here groups in form of tables inside
+// tabs, important data like: bank accounts, credit cards and loans.
 const MoreInfo: FC<MoreInfoProps> = () => {
   const { data: company } = useCompanyQuery()
   const { data: cards } = useCardsQuery(company?.id ?? 0)
