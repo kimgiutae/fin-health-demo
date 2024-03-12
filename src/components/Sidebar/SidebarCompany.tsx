@@ -9,13 +9,13 @@ const SidebarCompany: FC = () => {
     <SidebarSection title='General details'>
       <UnorderedList>
         <ListItem>
-          <b>Co. Name:</b> {company?.name} (UID: {company?.id})
+          <b>Co. Name:</b> {company.name} (UID: {company.id})
         </ListItem>
         <ListItem>
-          <b>Co. Code:</b> {company?.code}
+          <b>Co. Code:</b> {company.code}
         </ListItem>
         <ListItem>
-          <b>Stock Symbol:</b> {company?.symbol}
+          <b>Stock Symbol:</b> {company.symbol}
         </ListItem>
         <ListItem>
           <b>Other:</b> Lorem ipsum dolor.

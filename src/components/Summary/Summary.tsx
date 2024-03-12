@@ -13,8 +13,8 @@ import type { SummaryProps } from './SummaryProps'
 // in forms of little stats boxes: revenue, expenses, profit, etc.
 const Summary: FC<SummaryProps> = () => {
   const { data: company } = useCompanyQuery()
-  const { data: revenues } = useRevenuesQuery(company?.id || 0)
-  const { data: expenses } = useExpensesQuery(company?.id || 0)
+  const { data: revenues } = useRevenuesQuery(company.id)
+  const { data: expenses } = useExpensesQuery(company.id)
 
   // PERF: useMemo for saving expensive calcs
   const profit = useMemo(() => {
@@ -31,16 +31,12 @@ const Summary: FC<SummaryProps> = () => {
       <StatGroup sx={styles.wrapper}>
         <Stat>
           <StatLabel>Total revenue:</StatLabel>
-          <StatNumber>
-            {currency(revenues ? revenues[revenues.length - 1] : 0).format()}
-          </StatNumber>
+          <StatNumber>{currency(revenues[revenues.length - 1]).format()}</StatNumber>
           <StatHelpText>(last month)</StatHelpText>
         </Stat>
         <Stat>
           <StatLabel>Total expenses:</StatLabel>
-          <StatNumber>
-            {currency(expenses ? expenses[expenses.length - 1] : 0).format()}
-          </StatNumber>
+          <StatNumber>{currency(expenses[expenses.length - 1]).format()}</StatNumber>
           <StatHelpText>(last month)</StatHelpText>
         </Stat>
         <Stat>

@@ -19,8 +19,8 @@ const Chart: FC<ChartProps> = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   const { data: company } = useCompanyQuery()
-  const { data: revenues } = useRevenuesQuery(company?.id || 0)
-  const { data: expenses } = useExpensesQuery(company?.id || 0)
+  const { data: revenues } = useRevenuesQuery(company.id)
+  const { data: expenses } = useExpensesQuery(company.id)
   const { hideProfit, monthsCount, hideExpenses } = useChartContext()
 
   // NOTE: effect only re-trigers if <ChartProvider> or queries content updates

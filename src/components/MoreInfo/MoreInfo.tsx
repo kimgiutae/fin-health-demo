@@ -27,9 +27,9 @@ import type { MoreInfoProps } from './MoreInfoProps'
 // tabs, important data like: bank accounts, credit cards and loans.
 const MoreInfo: FC<MoreInfoProps> = () => {
   const { data: company } = useCompanyQuery()
-  const { data: cards } = useCardsQuery(company?.id ?? 0)
-  const { data: loans } = useLoansQuery(company?.id ?? 0)
-  const { data: accounts } = useAccountsQuery(company?.id ?? 0)
+  const { data: cards } = useCardsQuery(company.id)
+  const { data: loans } = useLoansQuery(company.id)
+  const { data: accounts } = useAccountsQuery(company.id)
   return (
     <Tabs>
       <TabList>
@@ -49,7 +49,7 @@ const MoreInfo: FC<MoreInfoProps> = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {accounts?.map(({ bank, name, balance }) => (
+                {accounts.map(({ bank, name, balance }) => (
                   <Tr key={kebabCase(bank)}>
                     <Td>{bank}</Td>
                     <Td>{name}</Td>
@@ -74,7 +74,7 @@ const MoreInfo: FC<MoreInfoProps> = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {cards?.map(({ name, limit, balance, interest, minPayment, paymentDate }) => (
+                {cards.map(({ name, limit, balance, interest, minPayment, paymentDate }) => (
                   <Tr key={kebabCase(name)}>
                     <Td>{name}</Td>
                     <Td>{currency(limit).format()}</Td>
@@ -89,7 +89,7 @@ const MoreInfo: FC<MoreInfoProps> = () => {
           </TableContainer>
         </TabPanel>
         <TabPanel p='1rem 0'>
-          {loans?.length ? (
+          {loans.length ? (
             <TableContainer></TableContainer>
           ) : (
             <Alert status='info'>

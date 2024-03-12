@@ -3,16 +3,16 @@ import { Link } from '@chakra-ui/react'
 import SidebarSwitch from 'components/Sidebar/SidebarSwitch'
 import SidebarSection from './SidebarSection'
 import useChartContext from 'hooks/useChartContext'
-import type { FC } from 'react'
-import useExpensesQuery from 'hooks/useExpensesQuery'
 import useCompanyQuery from 'hooks/useCompanyQuery'
+import useExpensesQuery from 'hooks/useExpensesQuery'
+import type { FC } from 'react'
 
 const SidebarSettings: FC = () => {
   const { hideProfitUpdate, monthsCountUpdate, hideExpensesUpdate } = useChartContext()
   const { data: company } = useCompanyQuery()
-  const { data: _expenses } = useExpensesQuery(company?.id || 0)
+  const { data: _expenses } = useExpensesQuery(company.id)
   return (
-    <SidebarSection title='Chart display settings'>
+    <SidebarSection title='Display settings'>
       <SidebarSwitch
         name='hide-profit'
         label='Hide profit?'
