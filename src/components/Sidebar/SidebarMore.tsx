@@ -11,6 +11,7 @@ const SidebarMore: FC = () => {
     return <SidebarSectionSkeleton />
   }
   if (isError) {
+    console.error('Fake server error')
     return <SidebarMoreError refetch={refetch} />
   }
   return (
