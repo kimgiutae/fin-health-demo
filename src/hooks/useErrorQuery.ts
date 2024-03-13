@@ -1,20 +1,21 @@
-import delay from 'utils/delay'
-import { useSuspenseQuery } from '@tanstack/react-query'
-import type { Company } from 'types/Company'
-import type { UseSuspenseQueryResult } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
+import type { UseQueryResult } from '@tanstack/react-query'
 
 const useErrorQuery: UseErrorQuery = () => {
-  const query = useSuspenseQuery({
+  const query = useQuery({
     queryKey: ['error'],
     queryFn: async () => {
-      await delay(500)
-      throw Error('Server error')
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          reject(new Error('Failed to fetch data'))
+        }, 1000)
+      })
     }
   })
   return query
 }
 
-type UseErrorQuery = () => UseSuspenseQueryResult<Company, Error>
+type UseErrorQuery = () => UseQueryResult<unknown, Error>
 
 export default useErrorQuery
 export type { UseErrorQuery }

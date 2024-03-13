@@ -1,12 +1,17 @@
 import useErrorQuery from 'hooks/useErrorQuery'
 import SidebarSection from './SidebarSection'
+import SidebarMoreError from 'components/Sidebar/SidebarMoreError'
+import SidebarSectionSkeleton from 'components/Sidebar/SidebarSectionSkeleton'
 import type { FC } from 'react'
 
 const SidebarMore: FC = () => {
-  // Fake error query
-  const { error } = useErrorQuery()
-  if (error) {
-    throw error
+  // NOTE: Fake error query. Can't use suspense because triggers a development warning
+  const { isError, refetch, isLoading } = useErrorQuery()
+  if (isLoading) {
+    return <SidebarSectionSkeleton />
+  }
+  if (isError) {
+    return <SidebarMoreError refetch={refetch} />
   }
   return (
     <SidebarSection sx={{ mb: '0' }} title='More settings'>

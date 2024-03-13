@@ -24,11 +24,7 @@ const Sidebar: FC<SidebarProps> = () => {
       <Suspense fallback={<SidebarSectionSkeleton />}>
         <SidebarSettings />
       </Suspense>
-      <ErrorBoundary fallback={<SidebarMoreError />}>
-        <Suspense fallback={<SidebarSectionSkeleton />}>
-          <SidebarMore />
-        </Suspense>
-      </ErrorBoundary>
+      <SidebarMore />
     </Box>
   )
 }
