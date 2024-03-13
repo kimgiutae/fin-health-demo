@@ -46,10 +46,18 @@ Some (short-term) to-dos to improve app overall:
 
 - Create mock server to create more "realistic" data and easly port to other invironments.
 - Better understandment of client visualization goals (the assessment was little vague).
-- Better testing.
+- More testing.
 
 ## How to run
 
 Simple clone the repo, install deps in local, and run command: "npm start".
 
 Requires node.js at least v16.
+
+## How to test
+
+I'm using Playwright to E2E testing in the main 3 browsers.
+
+To test, run command: "npm run windows-test" (for windows environment), or "npm run unix-test" (for UNIX environment).
+
+If the app is already running (in localhost 3000 port), just run command: "npm test".
