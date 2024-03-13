@@ -18,7 +18,9 @@ const Header: FC<HeaderProps> = () => {
         <Avatar sx={styles.avatar} name='BAGS' src='#' size={{ base: 'sm', md: 'md' }} />
       </Box>
       <Box sx={styles.textWrapper}>
-        <Heading sx={styles.heading}>Fin-Health-Demo:</Heading>
+        <Heading id='header-title' sx={styles.heading}>
+          Fin-Health-Demo:
+        </Heading>
         <Suspense fallback={<HeaderDescSkeleton />}>
           <HeaderDesc />
         </Suspense>

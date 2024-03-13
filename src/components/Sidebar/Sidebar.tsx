@@ -17,7 +17,7 @@ import type { SidebarProps } from './SidebarProps'
 // skeletons for better UX.
 const Sidebar: FC<SidebarProps> = () => {
   return (
-    <Box as='nav' sx={styles.wrapper}>
+    <Box as='nav' id='sidebar' sx={styles.wrapper}>
       <Suspense fallback={<SidebarSectionSkeleton />}>
         <SidebarCompany />
       </Suspense>

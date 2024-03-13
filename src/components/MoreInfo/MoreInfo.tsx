@@ -31,7 +31,7 @@ const MoreInfo: FC<MoreInfoProps> = () => {
   const { data: loans } = useLoansQuery(company.id)
   const { data: accounts } = useAccountsQuery(company.id)
   return (
-    <Tabs>
+    <Tabs id='tabs'>
       <TabList>
         <Tab>Banks accounts</Tab>
         <Tab>Credit cards</Tab>

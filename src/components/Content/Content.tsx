@@ -15,7 +15,7 @@ const Content: FC<ContentProps> = () => {
   // PERF: delay expensive script load
   const LazyChart = lazy(() => import('components/Chart'))
   return (
-    <Box sx={styles.wrapper}>
+    <Box id='content' sx={styles.wrapper}>
       <Suspense fallback={<SummarySkeleton />}>
         <Summary />
       </Suspense>

@@ -28,7 +28,7 @@ const Summary: FC<SummaryProps> = () => {
   }, [revenues, expenses])
   return (
     <HorizontalScroller sx={styles.scroller}>
-      <StatGroup sx={styles.wrapper}>
+      <StatGroup id='summary' sx={styles.wrapper}>
         <Stat>
           <StatLabel>Total revenue:</StatLabel>
           <StatNumber>{currency(revenues[revenues.length - 1]).format()}</StatNumber>

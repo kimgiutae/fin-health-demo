@@ -113,9 +113,9 @@ const Chart: FC<ChartProps> = () => {
     }
   }, [revenues, expenses, canvasRef, hideProfit, monthsCount, hideExpenses])
   return (
-    <HorizontalScroller id='chart' sx={styles.scroller}>
+    <HorizontalScroller sx={styles.scroller}>
       <Box sx={styles.wrapper}>
-        <canvas ref={canvasRef} />
+        <canvas id='chart' ref={canvasRef} />
       </Box>
     </HorizontalScroller>
   )
